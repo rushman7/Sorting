@@ -29,22 +29,27 @@ def bubble_sort( arr ):
                 largest_index += 1
 
     return arr
-
+    
+import random
 
 # STRETCH: implement the Count Sort function below
 def count_sort( arr ):
     # create a count array to store the count of each unique object
     if arr == []:
         return arr
+
+    for num in range(0, len(arr)):
+        if arr[num] < 0:
+            return "Error, negative numbers not allowed in Count Sort"
+        
     count_array = []
 
-    for num in range(0, len(arr)+1):
+    for num in range(0, max(arr) + 1):
         count_array.append(0)
 
     # count each element in the given array and place the count at the appropriate index
     for num in range(0, len(arr)):
         count_array[arr[num]] += 1
-    # print(count_array)
 
     # modify the count array by adding the previous counts
     for num in range(0, len(count_array) - 1):
@@ -57,9 +62,7 @@ def count_sort( arr ):
     for val in range(0, len(arr)):
         new_array[count_array[arr[val]]-1] = arr[val]
         count_array[arr[val]] -= 1
-    print(new_array)
 
     # place the objects in their correct positions and decrease the count by one
     return new_array
 
-count_sort([1, 5, 8, 4, 2, 9, 6, 0, 3, 7])
