@@ -32,6 +32,34 @@ def bubble_sort( arr ):
 
 
 # STRETCH: implement the Count Sort function below
-def count_sort( arr, maximum=-1 ):
+def count_sort( arr ):
+    # create a count array to store the count of each unique object
+    if arr == []:
+        return arr
+    count_array = []
 
-    return arr
+    for num in range(0, len(arr)+1):
+        count_array.append(0)
+
+    # count each element in the given array and place the count at the appropriate index
+    for num in range(0, len(arr)):
+        count_array[arr[num]] += 1
+    # print(count_array)
+
+    # modify the count array by adding the previous counts
+    for num in range(0, len(count_array) - 1):
+        count_array[num+1] = count_array[num] + count_array[num+1]
+
+    # create an array based on the last index value
+    new_array = [None] * len(arr)
+
+    # corresponding values represent the places in the count array
+    for val in range(0, len(arr)):
+        new_array[count_array[arr[val]]-1] = arr[val]
+        count_array[arr[val]] -= 1
+    print(new_array)
+
+    # place the objects in their correct positions and decrease the count by one
+    return new_array
+
+count_sort([1, 5, 8, 4, 2, 9, 6, 0, 3, 7])
