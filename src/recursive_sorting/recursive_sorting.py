@@ -19,18 +19,19 @@ def merge( arrA, arrB ):
 
 # TO-DO: implement the Merge Sort function below USING RECURSION
 def merge_sort( arr ):
-    if len(arr) <= 1: # Base case
-      return arr
-
-    # divide in half until you have subarrays of length 1
-    mid = len(arr)//2
-    arrA = merge_sort(arr[:mid])
-    arrB = merge_sort(arr[mid:])
-    return merge(arrA, arrB)
-
+  if len(arr) < 2:
     return arr
 
-# merge_sort([1, 5, 8, 4, 2, 9, 6, 0, 3, 7])
+  mid = len(arr) // 2
+  left = merge_sort(arr[:mid])
+  right = merge_sort(arr[mid:])
+
+  return merge(left, right)
+  
+  return arr
+
+
+merge_sort([1, 5, 8, 4, 2, 9, 6, 0, 3, 7])
 
 
 # STRETCH: implement an in-place merge sort algorithm
