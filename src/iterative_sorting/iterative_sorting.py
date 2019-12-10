@@ -15,7 +15,7 @@ def selection_sort( arr ):
 
 # TO-DO:  implement the Bubble Sort function below
 def bubble_sort( arr ):
-    for i in range(0, len(arr) - 1):
+    for i in range(0, len(arr)):
         isDone = True
         largest_index = 0
 
@@ -42,10 +42,7 @@ def count_sort( arr ):
         if arr[num] < 0:
             return "Error, negative numbers not allowed in Count Sort"
         
-    count_array = []
-
-    for num in range(0, max(arr) + 1):
-        count_array.append(0)
+    count_array = [0 for num in range(0, max(arr) + 1)]
 
     # count each element in the given array and place the count at the appropriate index
     for num in range(0, len(arr)):
@@ -56,7 +53,7 @@ def count_sort( arr ):
         count_array[num+1] = count_array[num] + count_array[num+1]
 
     # create an array based on the last index value
-    new_array = [None] * len(arr)
+    new_array = [0 for num in range(0, len(arr))]
 
     # corresponding values represent the places in the count array
     for val in range(0, len(arr)):
